@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-TW"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第三組｜360度籃球戰術觀看與問卷</title>
+<html lang="zh-TW"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="strict-origin-when-cross-origin"><title>第三組｜360度籃球戰術觀看與問卷</title>
 <style>
 :root {color-scheme:light;--navy:#12263b;--blue:#1863b1;--sea:#168fa4;--ink:#18283b;--muted:#667585;--bg:#f4f7fb;--line:#dce6ef}
 *{box-sizing:border-box} body{font-family:"Microsoft JhengHei","PingFang TC",system-ui,sans-serif;color:var(--ink);background:var(--bg);margin:0} .container{max-width:1120px;margin:24px auto;padding:0 18px 30px}
@@ -10,8 +10,8 @@ main{background:white;border:1px solid var(--line);border-radius:0 0 18px 18px;p
 button,.btn{font:inherit}button:disabled{cursor:not-allowed;opacity:.55}.btn{display:inline-block;text-decoration:none;border:0;border-radius:9px;background:#1863b1;color:white;padding:10px 18px;cursor:pointer;font-weight:600}.btn:hover{background:#13538f}.btn.ghost{background:#e9f0f6;color:#244863}.btn.ghost:hover{background:#d9e7ef}.btn.green{background:#127b5d}.btn.green:hover{background:#0c6249}.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.muted{color:var(--muted);font-size:14px;line-height:1.75}.bar-text{font-size:13px;color:#4c647a}.video{position:relative;width:100%;aspect-ratio:16/9;background:#101b24;border-radius:11px;overflow:hidden;margin:15px 0}.video iframe{height:100%;width:100%;border:0}.status{margin:12px 0;padding:12px;border-radius:9px;background:#eef6fb;font-size:14px;line-height:1.7}.small{font-size:12px;color:#728293}.formframe{width:100%;min-height:750px;border:1px solid var(--line);border-radius:11px;margin-top:15px}
 footer{text-align:center;color:#748395;margin:12px 0 0;font-size:12px}@media(max-width:720px){.g,.role-group{grid-template-columns:1fr}main{padding:18px}header{padding:20px}.video{aspect-ratio:16/10}}
 </style>
-</head><body><div class="container"><header><div class="tag">BASKETBALL 360 LEARNING STUDY · GROUP C</div><h1>🏀 360度籃球戰術觀看</h1><p>第三組（未融入TGfU）｜觀看所有戰術單元後填寫研究問卷</p></header><main>
-<div id="host-warning" class="notice warning hidden">此頁正在以本機 file:// 路徑開啟。YouTube 嵌入與播放狀態偵測可能無法運作。正式施測請放在 HTTPS 網站（例如 GitHub Pages），不要直接雙擊 HTML。</div>
+</head><body><div class="container"><header><div class="tag">BASKETBALL 360 LEARNING STUDY</div><h1>🏀 360度籃球戰術觀看</h1><p>完成七個360度戰術影像單元後填寫研究問卷</p></header><main>
+<div id="host-warning" class="notice warning hidden">⚠ 目前使用本機 file:// 開啟。YouTube可能因缺少來源識別而顯示錯誤153。正式施測必須將網頁放到HTTPS網站（例如GitHub Pages），不要直接雙擊HTML。</div>
 <section id="dashboard">
 <div class="title-row"><h2>選擇戰術單元</h2><span class="step">步驟 1／2</span></div>
 <p class="muted">選擇單元 → 選擇攻防角色視角 → 播放至片尾。每單元至少完成一種角色視角，才計入進度。</p><div class="bar-text" id="progress-label">已完成 0／7 個單元</div><div class="progress-bar"><div id="progress-fill" style="width:0%"></div></div>
@@ -20,12 +20,12 @@ footer{text-align:center;color:#748395;margin:12px 0 0;font-size:12px}@media(max
 </section>
 <section id="choose-role" class="hidden">
 <div class="title-row"><h2 id="unit-title">戰術單元</h2><span class="step">選擇360度角色視角</span></div>
-<div class="notice">請選擇至少一個角色視角並觀看至結束。此版本<strong>不強制播放2D戰術引導影片</strong>，避免第三組被加入額外的TGfU式教學活動。原學生檔案中的2D影片資訊仍保存在程式資料內，並未刪除。</div>
+<div class="notice">請選擇至少一個角色視角並完整觀看。完成所有七個單元後即可填寫研究問卷。</div>
 <div class="role-group" id="role-grid"></div><div class="btn-row"><button class="btn ghost" id="back-units">返回戰術單元</button></div>
 </section>
 <section id="watch" class="hidden">
 <div class="title-row"><h2 id="watch-title">360影片播放</h2><span class="step">正在觀看</span></div>
-<div id="error" class="notice err hidden"></div>
+<div id="error" class="notice err hidden"></div><div id="diagnostic-help" class="muted">如果播放器出現錯誤，<a id="open-on-youtube" target="_blank" rel="noopener noreferrer">可在YouTube直接測試此影片</a>。這只供確認影片狀態，外部觀看不計入問卷解鎖進度。</div>
 <div class="video"><div id="yt-player-slot"><div id="yt-player"></div></div></div>
 <div id="watch-status" class="status">正在載入 YouTube 360度影片…</div>
 <div class="bar-text" id="video-progress-label">尚未開始觀看</div><div class="progress-bar"><div id="video-progress" style="width:0%"></div></div>
@@ -38,22 +38,14 @@ footer{text-align:center;color:#748395;margin:12px 0 0;font-size:12px}@media(max
 <div class="btn-row"><a class="btn green" id="form-direct" target="_blank" rel="noopener noreferrer">另開Google問卷</a><button class="btn ghost" id="review-videos">返回影片單元</button></div>
 <iframe title="第三組研究問卷" class="formframe" id="form-iframe" loading="lazy"></iframe>
 </section>
-</main><footer>本版本根據學生提供的22.html改製，保留七個戰術與角色影片對應。正式研究前須確認YouTube嵌入權限及Google表單必填設定。</footer></div>
-<script src="https://www.youtube.com/iframe_api"></script>
+</main><footer>影片播放遇到問題時，請記下顯示的錯誤代碼並告知研究人員。</footer></div>
 <script>
 'use strict';
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPloVitUwd6V9tcmfSrcMlaDkOjKJ43Q/viewform?usp=publish-editor';
-  const YT_1 = 'vPyxEvSNwKU';
-  const YT_2 = 'T1D6G7FlKAM';
-  const YT_3 = '8mxnWQ-q2ow';
-  const YT_4 = 'sX49UyKfUVE';
-  const YT_5 = 'OBkBmoL5ufw';
-  const YT_6 = 'ZqSB5mhyQbk';
 
   const tactics = [
     { 
       id: '1-1', type: '2-man', name: '1-1. Screen - 空檔投 【擋拆外彈投籃 Pick & Pop】', 
-      youtube2D: YT_1,
       youtube360: { 
         off_1: 'OFjv5ZgPEVU', 
         off_2: 'r9tGgTT4IR4', 
@@ -63,7 +55,6 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPlo
     },
     { 
       id: '1-2', type: '2-man', name: '1-2. 傳切配合 【Pick & Roll】', 
-      youtube2D: YT_2,
       youtube360: { 
         off_1: 'aRrJQiQmhBM', 
         off_2: '83_Gyt7l09I', 
@@ -73,7 +64,6 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPlo
     },
     { 
       id: '1-3', type: '2-man', name: '1-3. 單擋 + 外彈投籃 Pop action 【Re-Screening & Pop】', 
-      youtube2D: YT_3,
       youtube360: { 
         off_1: 'ROpRgkTwwyE', 
         off_2: 'gGQv4fQhimA', 
@@ -83,7 +73,6 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPlo
     },
     { 
       id: '2-1', type: '3-man', name: '2-1. 反向擋 (基本離球) 【離球掩護空切投籃 Off-Ball Away Screen】', 
-      youtube2D: YT_4,
       youtube360: { 
         off_1: '6HprxVgfuD4', 
         off_2: 'TZoIImyPp9o', 
@@ -95,7 +84,6 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPlo
     },
     { 
       id: '2-2', type: '3-man', name: '2-2. 反向掩護繞出投籃 【Back Screen】', 
-      youtube2D: YT_5,
       youtube360: { 
         off_1: 'xd0RFMRfCLs', 
         off_2: 'kAXG6Zl7Fz8', 
@@ -107,7 +95,6 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPlo
     },
     { 
       id: '2-3', type: '3-man', name: '2-3. 傳切配合 【Give & Go】', 
-      youtube2D: YT_6,
       youtube360: { 
         off_1: '0cYiWL5AKQw', 
         off_2: 'j-zjQS2bbSo', 
@@ -119,7 +106,6 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPlo
     },
     { 
       id: '2-4', type: '3-man', name: '2-4. 反向擋轉動態擋拆 【Off-Ball Screen Action】', 
-      youtube2D: YT_1,
       youtube360: { 
         off_1: 'WEvAMM3gISo', 
         off_2: 'uAhviMqJ0b0', 
@@ -132,22 +118,110 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPlo
   ];
 
 
+// GROUP3 PLAYER FIX 2026-11-26 v2.1
 const required=7;let playEpoch=0,youtubeReady=false, player=null,unitIndex=0,currentVideoID='',currentRole='',finished=new Set(), watched=new Set(),lastTime=null,activeInterval=null,activeVideoDone=false,videoDuration=0,apiError=false;
 const $=id=>document.getElementById(id);function show(id){for(let k of ['dashboard','choose-role','watch','survey'])$(k).classList.toggle('hidden',k!==id)};
 const isValidId=id=>/^[A-Za-z0-9_-]{11}$/.test(id||'');
-window.onYouTubeIframeAPIReady=function(){youtubeReady=true;};
+let pendingEpoch=null, apiWaitTimeout=null;
+window.onYouTubeIframeAPIReady=function(){
+ youtubeReady=true;
+ if(pendingEpoch!==null){
+  const epoch=pendingEpoch;
+  pendingEpoch=null;
+  attachYouTubeApi(epoch);
+ }
+};
 function renderDashboard(){show('dashboard');const html=tactics.map((v,i)=>`<button class="unit ${finished.has(i)?'done':''}" data-idx="${i}"><div class="top"><span>${v.id} ${v.name.replace(/^\d-\d\.\s*/, '')}</span><span class="mark">${finished.has(i)?'✓ 已完成':'待觀看'}</span></div><div class="sub">${v.type==='2-man'?'二人戰術':'三人戰術'} · 可選進攻或防守視角</div></button>`).join('');$('unit-grid').innerHTML=html;document.querySelectorAll('.unit').forEach(el=>el.addEventListener('click',()=>chooseRole(Number(el.dataset.idx))));$('progress-label').textContent=`已完成 ${finished.size}／${required} 個單元`;$('progress-fill').style.width=(finished.size/required*100)+'%';$('goto-form').disabled=finished.size<required;$('goto-form').textContent=finished.size>=required?'全部完成，前往研究問卷':'尚須完成所有7個單元';}
 function chooseRole(i){stopPlayer();unitIndex=i;let t=tactics[i];$('unit-title').textContent=t.name;const names={off_1:'進攻 1號｜持球者',off_2:'進攻 2號｜掩護／切入者',off_3:'進攻 3號｜戰術參與者',def_x1:'防守 X1',def_x2:'防守 X2',def_x3:'防守 X3'};$('role-grid').innerHTML=Object.keys(t.youtube360).map(k=>`<button class="role ${k.startsWith('off')?'off':''}" data-role="${k}">${names[k]||k}</button>`).join('');document.querySelectorAll('.role').forEach(el=>el.addEventListener('click',()=>startVideo(el.dataset.role)));show('choose-role')}
-function startVideo(role){stopPlayer();currentRole=role;currentVideoID=tactics[unitIndex].youtube360[role];show('watch');$('watch-title').textContent=`${tactics[unitIndex].id}｜${role.replace('_',' ')}`;$('error').classList.add('hidden');$('watch-status').textContent='正在連線 YouTube…';if(!isValidId(currentVideoID)){fail('影片ID格式不正確，請核對學生影片連結。');return;}if(!youtubeReady){fail('YouTube播放器尚未載入。請確認網路可連線，並透過HTTPS網站開啟本頁。');return;}
-watched=new Set();lastTime=null;activeVideoDone=false;videoDuration=0;apiError=false;resetProgress();const epoch=playEpoch;try{player=new YT.Player('yt-player',{height:'100%',width:'100%',videoId:currentVideoID,playerVars:{playsinline:1,rel:0,enablejsapi:1},events:{onReady:(e)=>{if(epoch!==playEpoch)return;let d=e.target.getDuration();videoDuration=d||0;$('watch-status').textContent='影片已載入。請按播放鍵，從頭看到結尾。';e.target.seekTo(0,true);e.target.pauseVideo();},onStateChange:e=>{if(epoch===playEpoch)stateChanged(e)},onError:e=>{if(epoch!==playEpoch)return;apiError=true;let descriptions={2:'影片ID無效',5:'播放器無法播放',100:'影片已移除或設為私人',101:'影片禁止在其他網站嵌入',150:'影片禁止在其他網站嵌入',153:'缺少必要的播放器來源資訊，請使用HTTPS正式網址開啟'};fail('YouTube錯誤 '+e.data+'：'+(descriptions[e.data]||'無法播放')+'。請先到YouTube確認影片是否公開且允許嵌入。')}}});}catch(e){fail('無法建立YouTube播放器：'+e.message)}}
+function startVideo(role){
+ stopPlayer();
+ currentRole=role;
+ currentVideoID=tactics[unitIndex].youtube360[role];
+ show('watch');
+ $('watch-title').textContent=`${tactics[unitIndex].id}｜${role.replace('_',' ')}`;
+ $('open-on-youtube').href='https://www.youtube.com/watch?v='+encodeURIComponent(currentVideoID);
+ $('error').classList.add('hidden');
+ $('watch-status').textContent='正在建立播放器…';
+ if(!isValidId(currentVideoID)){fail('影片 ID 格式不正確，請核對學生影片連結。');return;}
+ watched=new Set();lastTime=null;activeVideoDone=false;videoDuration=0;apiError=false;
+ resetProgress();
+ const epoch=playEpoch;
+ // 先建立原生 iframe，再連接 IFrame API：可以預先設定 referrerpolicy。
+ // 若 API 載入失敗，播放器仍可顯示影片，但不能把觀看算入問卷解鎖。
+ const iframe=document.createElement('iframe');
+ iframe.id='yt-player';iframe.title='360 度籃球戰術影片';
+ iframe.width='100%';iframe.height='100%';iframe.allowFullscreen=true;
+ iframe.setAttribute('allow','accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share');
+ iframe.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+ iframe.style.cssText='width:100%;height:100%;border:0;';
+ const origin=location.protocol==='https:'?location.origin:'';
+ const params=new URLSearchParams({enablejsapi:'1',playsinline:'1',rel:'0'});
+ if(origin)params.set('origin',origin);
+ iframe.src='https://www.youtube.com/embed/'+encodeURIComponent(currentVideoID)+'?'+params.toString();
+ $('yt-player-slot').replaceChildren(iframe);
+ if(window.YT && typeof YT.Player==='function'){
+   attachYouTubeApi(epoch);
+ }else{
+   pendingEpoch=epoch;
+   $('watch-status').textContent='影片正在載入；同時等待YouTube觀看進度介面…';
+   apiWaitTimeout=setTimeout(()=>{
+     if(pendingEpoch!==epoch)return;
+     pendingEpoch=null;
+     $('watch-status').textContent='⚠ YouTube觀看進度介面未載入。可以嘗試播放影片，但本次觀看無法計入問卷解鎖。請關閉廣告攔截器、確認網路或重新載入網頁。';
+   },12000);
+ }
+}
+function attachYouTubeApi(epoch){
+ if(epoch!==playEpoch)return;
+ if(apiWaitTimeout){clearTimeout(apiWaitTimeout);apiWaitTimeout=null;}
+ pendingEpoch=null;
+ const iframe=$('yt-player');
+ if(!iframe||iframe.tagName!=='IFRAME')return;
+ try{
+  player=new YT.Player(iframe,{events:{
+    onReady:(e)=>{
+      if(epoch!==playEpoch)return;
+      videoDuration=e.target.getDuration()||0;
+      $('watch-status').textContent='✅ 影片已連線，請按下播放鍵並完整觀看。';
+    },
+    onStateChange:e=>{if(epoch===playEpoch)stateChanged(e)},
+    onError:e=>{
+      if(epoch!==playEpoch)return;
+      apiError=true;
+      const reasons={
+        2:'影片ID無效',5:'影片無法在HTML5播放器播放',
+        100:'影片不存在、已移除或設為私人',
+        101:'影片所有者禁止其他網站嵌入',150:'影片所有者禁止其他網站嵌入',
+        153:'YouTube無法識別網頁來源（HTTP Referer）'
+      };
+      fail('YouTube 錯誤 '+e.data+'：'+(reasons[e.data]||'播放失敗')+'。可使用上方連結直接檢查影片；如在YouTube可播放但網頁不能播放，請將錯誤代碼提供給老師。');
+    }
+  }});
+ }catch(e){fail('YouTube介面初始化失敗：'+e.message)}
+}
 function stateChanged(e){if(e.data===YT.PlayerState.PLAYING){if(!activeInterval)activeInterval=setInterval(sample,300);$('watch-status').textContent='正在紀錄觀看進度…';}else{sample();stopTimer();if(e.data===YT.PlayerState.ENDED){const ratio=videoDuration>0?watched.size/videoDuration:0;if(ratio>=0.9){finished.add(unitIndex);activeVideoDone=true;$('watch-status').textContent='✅ 此戰術單元已完成觀看！可回到主目錄繼續下一單元。';}else{$('watch-status').textContent='尚未達最低有效觀看比例（約90%）。請重播並完整觀看；直接跳到片尾不計入。';}resetProgress();}}}
 function sample(){if(!player||typeof player.getCurrentTime!=='function'||activeVideoDone)return;try{if(player.getPlayerState()!==YT.PlayerState.PLAYING)return;const t=player.getCurrentTime(),d=player.getDuration();if(d>0)videoDuration=d;if(lastTime!==null&&t>=lastTime&&t-lastTime<=1.5){for(let s=Math.floor(lastTime);s<=Math.floor(t);s++)if(s>=0&&s<Math.ceil(videoDuration))watched.add(s)}lastTime=t;resetProgress();}catch(e){}}
 function resetProgress(){const pct=videoDuration>0?Math.min(100,Math.round(100*watched.size/videoDuration)):0;$('video-progress').style.width=pct+'%';$('video-progress-label').textContent=`有效觀看進度：${pct}%（完成條件：≥90% 且播放到結束）`;}
-function stopTimer(){if(activeInterval){clearInterval(activeInterval);activeInterval=null;}}function stopPlayer(){playEpoch++;stopTimer();if(player){try{player.destroy()}catch(e){} player=null;}const slot=$('yt-player-slot');if(slot)slot.innerHTML='<div id="yt-player"></div>';}
-function fail(msg){stopTimer();$('error').textContent=msg;$('error').classList.remove('hidden');$('watch-status').textContent='播放發生問題；本單元不會被標記完成。';}
+function stopTimer(){if(activeInterval){clearInterval(activeInterval);activeInterval=null;}}
+function stopPlayer(){
+ playEpoch++;stopTimer();
+ pendingEpoch=null;
+ if(apiWaitTimeout){clearTimeout(apiWaitTimeout);apiWaitTimeout=null;}
+ if(player){try{player.destroy()}catch(e){} player=null;}
+ const slot=$('yt-player-slot');if(slot)slot.replaceChildren();
+}
+
+function fail(msg){stopTimer();
+ $('error').textContent=msg;
+ $('error').classList.remove('hidden');
+ $('watch-status').textContent='播放發生問題；本單元不會被標記完成。';
+}
+
 function revealForm(){if(finished.size<required){return;}stopPlayer();show('survey');$('form-direct').href=FORM_URL;const u=new URL(FORM_URL);u.searchParams.set('embedded','true');$('form-iframe').src=u.toString();}
 $('goto-form').onclick=revealForm;$('review-videos').onclick=renderDashboard;$('back-units').onclick=renderDashboard;$('back-dashboard').onclick=()=>{stopPlayer();renderDashboard();};$('back-roles').onclick=()=>chooseRole(unitIndex);$('restart-video').onclick=()=>startVideo(currentRole);
 if(location.protocol==='file:')$('host-warning').classList.remove('hidden');
 renderDashboard();
-// No name/student-ID fields on the video page. Completion is not persisted; refreshing resets the lightweight browser gate.
-</script></body></html>
+// No name/student-ID fields. Refreshing resets the lightweight browser gate.
+</script>
+<script src="https://www.youtube.com/iframe_api"></script>
+</body></html>
