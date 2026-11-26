@@ -7,34 +7,57 @@ header{border-radius:18px 18px 0 0;padding:26px 30px;background:linear-gradient(
 main{background:white;border:1px solid var(--line);border-radius:0 0 18px 18px;padding:26px 30px;box-shadow:0 10px 30px #1233a013} .hidden{display:none!important} .notice{padding:13px 15px;border-radius:10px;background:#eef6fb;color:#174c6e;font-size:14px;margin-bottom:20px;line-height:1.75}.warning{background:#fff5e6;color:#8f5118}.err{background:#ffeded;color:#922b2b}
 .title-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.title-row h2{font-size:21px;margin:0 0 16px}.step{font-size:13px;color:#567590}.progress-bar{width:100%;height:12px;border-radius:100px;background:#e5edf4;overflow:hidden;margin:7px 0 12px}.progress-bar>div{height:100%;background:#197c99;transition:width .25s}.g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.unit{border:1px solid var(--line);border-radius:10px;background:#fff;padding:15px;text-align:left;cursor:pointer;color:var(--ink);min-height:86px}.unit:hover{background:#f2f8fc;border-color:#8cbace}.unit.done{background:#edf8f3;border-color:#80c4a6}.unit .top{display:flex;justify-content:space-between;gap:10px;font-weight:700}.unit .sub{font-size:13px;color:#617384;margin-top:7px}.mark{color:#126c51;font-size:12px;white-space:nowrap}
 .role-group{margin-top:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.role{border:1px solid #c9dce9;background:#f4f9fc;border-radius:9px;cursor:pointer;padding:12px;font:inherit;text-align:center;font-weight:600}.role:hover{background:#dfedfa}.role.off{border-color:#e6cbcb;background:#fff5f5}.role.off:hover{background:#ffebeb}
-button,.btn{font:inherit}button:disabled{cursor:not-allowed;opacity:.55}.btn{display:inline-block;text-decoration:none;border:0;border-radius:9px;background:#1863b1;color:white;padding:10px 18px;cursor:pointer;font-weight:600}.btn:hover{background:#13538f}.btn.ghost{background:#e9f0f6;color:#244863}.btn.ghost:hover{background:#d9e7ef}.btn.green{background:#127b5d}.btn.green:hover{background:#0c6249}.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.muted{color:var(--muted);font-size:14px;line-height:1.75}.bar-text{font-size:13px;color:#4c647a}.video{position:relative;width:100%;aspect-ratio:16/9;background:#101b24;border-radius:11px;overflow:hidden;margin:15px 0}.video iframe{height:100%;width:100%;border:0}.status{margin:12px 0;padding:12px;border-radius:9px;background:#eef6fb;font-size:14px;line-height:1.7}.small{font-size:12px;color:#728293}.formframe{width:100%;min-height:750px;border:1px solid var(--line);border-radius:11px;margin-top:15px}
+button,.btn{font:inherit}button:disabled{cursor:not-allowed;opacity:.55}.btn{display:inline-block;text-decoration:none;border:0;border-radius:9px;background:#1863b1;color:white;padding:10px 18px;cursor:pointer;font-weight:600}.btn:hover{background:#13538f}.btn.ghost{background:#e9f0f6;color:#244863}.btn.ghost:hover{background:#d9e7ef}.btn.green{background:#127b5d}.btn.green:hover{background:#0c6249}.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.muted{color:var(--muted);font-size:14px;line-height:1.75}.bar-text{font-size:13px;color:#4c647a}.video{position:relative;width:100%;aspect-ratio:16/9;background:#101b24;border-radius:11px;overflow:hidden;margin:15px 0}.video #yt-player-slot{position:absolute;inset:0;width:100%;height:100%}.video #yt-player-slot iframe{display:block;width:100%;height:100%;border:0}.status{margin:12px 0;padding:12px;border-radius:9px;background:#eef6fb;font-size:14px;line-height:1.7}.small{font-size:12px;color:#728293}.formframe{width:100%;min-height:750px;border:1px solid var(--line);border-radius:11px;margin-top:15px}
 footer{text-align:center;color:#748395;margin:12px 0 0;font-size:12px}@media(max-width:720px){.g,.role-group{grid-template-columns:1fr}main{padding:18px}header{padding:20px}.video{aspect-ratio:16/10}}
+
+/* YouTube 2026 embedded 360 playback may lose native drag. The overlay drives the official SphericalProperties API. */
+.video .drag-zone{position:absolute;z-index:4;top:10%;bottom:15%;left:1.5%;right:1.5%;border-radius:8px;touch-action:none;cursor:grab;pointer-events:none;display:none;background:transparent;user-select:none}
+.video .drag-zone.enabled{display:block;pointer-events:auto}
+.video .drag-zone.dragging{cursor:grabbing}
+.view-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#f0f6fb;border:1px solid #d1e2ee;padding:12px;border-radius:10px;margin:10px 0}
+.view-toolbar button{border-radius:8px;border:1px solid #aec9dc;background:#fff;color:#174966;padding:9px 13px;font-weight:700;cursor:pointer;min-width:44px}
+.view-toolbar button:hover:not(:disabled){background:#dceffb}
+.view-toolbar button:disabled{opacity:.45;cursor:not-allowed}
+.view-toolbar .view-title{margin-right:6px;color:#244863;font-size:14px;font-weight:700}
+.view-status{color:#395f7b;font-size:13px;line-height:1.6;margin:6px 0 12px}
 </style>
-</head><body><div class="container"><header><div class="tag">BASKETBALL 360 LEARNING STUDY</div><h1>🏀 360度籃球戰術觀看</h1><p>完成七個360度戰術影像單元後填寫研究問卷</p></header><main>
+</head><body><div class="container"><header><div class="tag">BASKETBALL 360 LEARNING STUDY · GROUP C</div><h1>🏀 360度籃球戰術觀看</h1><p>三個360度戰術單元任選兩個，觀看完成後填寫研究問卷</p><div style="color:#b5e3ff;font-size:12px;margin-top:8px">版本：2026-11-27 v2.5｜三選二問卷版</div></header><main>
 <div id="host-warning" class="notice warning hidden">⚠ 目前使用本機 file:// 開啟。YouTube可能因缺少來源識別而顯示錯誤153。正式施測必須將網頁放到HTTPS網站（例如GitHub Pages），不要直接雙擊HTML。</div>
 <section id="dashboard">
 <div class="title-row"><h2>選擇戰術單元</h2><span class="step">步驟 1／2</span></div>
-<p class="muted">選擇單元 → 選擇攻防角色視角 → 播放至片尾。每單元至少完成一種角色視角，才計入進度。</p><div class="bar-text" id="progress-label">已完成 0／7 個單元</div><div class="progress-bar"><div id="progress-fill" style="width:0%"></div></div>
+<p class="muted">從下方三個戰術單元任選兩個 → 各選擇一種攻防角色視角 → 觀看至片尾。完成兩個不同單元後即可填寫問卷。</p><div class="bar-text" id="progress-label">已完成 0／2 個必要單元（共3個可選）</div><div class="progress-bar"><div id="progress-fill" style="width:0%"></div></div>
 <div id="unit-grid" class="g"></div>
-<div class="btn-row"><button class="btn green" id="goto-form" disabled>尚須完成所有7個單元</button></div>
+<div class="btn-row"><button class="btn green" id="goto-form" disabled>尚須完成任意2個單元</button></div>
 </section>
 <section id="choose-role" class="hidden">
 <div class="title-row"><h2 id="unit-title">戰術單元</h2><span class="step">選擇360度角色視角</span></div>
-<div class="notice">請選擇至少一個角色視角並完整觀看。完成所有七個單元後即可填寫研究問卷。</div>
+<div class="notice">請選擇至少一個角色視角並完整觀看。三個戰術單元任選兩個不同單元完成後，即可填寫研究問卷。</div>
 <div class="role-group" id="role-grid"></div><div class="btn-row"><button class="btn ghost" id="back-units">返回戰術單元</button></div>
 </section>
 <section id="watch" class="hidden">
 <div class="title-row"><h2 id="watch-title">360影片播放</h2><span class="step">正在觀看</span></div>
 <div id="error" class="notice err hidden"></div><div id="diagnostic-help" class="muted">如果播放器出現錯誤，<a id="open-on-youtube" target="_blank" rel="noopener noreferrer">可在YouTube直接測試此影片</a>。這只供確認影片狀態，外部觀看不計入問卷解鎖進度。</div>
-<div class="video"><div id="yt-player-slot"><div id="yt-player"></div></div></div>
+<div class="video"><div id="yt-player-slot"><div id="yt-player"></div></div><div id="drag-zone" class="drag-zone" aria-label="在此拖曳切換360度觀看方向" title="按住滑鼠左右、上下拖曳以轉動360度視角"></div></div>
+<div class="view-toolbar" id="view-toolbar" aria-label="360度視角控制">
+  <span class="view-title">360° 視角控制</span>
+  <button type="button" data-camera="left" disabled title="向左轉">◀ 左</button>
+  <button type="button" data-camera="right" disabled title="向右轉">右 ▶</button>
+  <button type="button" data-camera="up" disabled title="向上看">▲ 上</button>
+  <button type="button" data-camera="down" disabled title="向下看">下 ▼</button>
+  <button type="button" data-camera="zoomIn" disabled title="放大視角">＋ 放大</button>
+  <button type="button" data-camera="zoomOut" disabled title="縮小視角">－ 縮小</button>
+  <button type="button" data-camera="reset" disabled title="回到正面">⟳ 正面</button>
+  <button type="button" id="pause-play" disabled>⏯ 播放／暫停</button>
+</div>
+<div id="view-status" class="view-status" role="status">影片開始播放後，將偵測360度視角功能；可使用上方方向按鈕，或直接在影片中央拖曳。</div>
 <div id="watch-status" class="status">正在載入 YouTube 360度影片…</div>
 <div class="bar-text" id="video-progress-label">尚未開始觀看</div><div class="progress-bar"><div id="video-progress" style="width:0%"></div></div>
-<p class="muted">可用滑鼠拖曳觀看360度視角。需累計觀看影片約90%並播放至結尾才能完成本單元；直接跳到片尾不計入已觀看。此為一般網頁的流程檢查，不能作為絕對防止繞過的認證機制。</p>
+<p class="muted">影片播放後可在畫面中央拖曳360度視角，或使用方向按鈕。若視角控制無法啟用，請先確認原影片在YouTube是否支援360度。需累計觀看影片約90%並播放至結尾才能完成本單元；直接跳到片尾不計入已觀看。此為一般網頁的流程檢查，不能作為絕對防止繞過的認證機制。</p>
 <div class="btn-row"><button class="btn ghost" id="restart-video">重播本視角</button><button class="btn ghost" id="back-roles">返回角色選擇</button><button class="btn ghost" id="back-dashboard">返回所有單元</button></div>
 </section>
 <section id="survey" class="hidden">
 <div class="title-row"><h2>觀看完成｜填寫研究問卷</h2><span class="step">步驟 2／2</span></div>
-<div class="notice">七個戰術單元均已完成最低觀看要求。請在下方 Google 表單填寫<strong>姓名、學號</strong>及完整研究問卷；本網頁不會另外蒐集個人資料。若表單未正常顯示，點選「另開表單」按鈕。</div>
+<div class="notice">已完成三個戰術單元中的任意兩個，符合最低觀看要求。請在下方 Google 表單填寫<strong>姓名、學號</strong>及完整研究問卷；本網頁不會另外蒐集個人資料。若表單未正常顯示，點選「另開表單」按鈕。</div>
 <div class="btn-row"><a class="btn green" id="form-direct" target="_blank" rel="noopener noreferrer">另開Google問卷</a><button class="btn ghost" id="review-videos">返回影片單元</button></div>
 <iframe title="第三組研究問卷" class="formframe" id="form-iframe" loading="lazy"></iframe>
 </section>
@@ -118,11 +141,14 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPlo
   ];
 
 
-// GROUP3 PLAYER FIX 2026-11-26 v2.1
-const required=7;let playEpoch=0,youtubeReady=false, player=null,unitIndex=0,currentVideoID='',currentRole='',finished=new Set(), watched=new Set(),lastTime=null,activeInterval=null,activeVideoDone=false,videoDuration=0,apiError=false;
+// GROUP3 PLAYER FIX 2026-11-27 v2.5 - 2 of 3 selected two-person tactic units
+// 顯示原七個單元中的前三個二人戰術（1-1、1-2、1-3）；完成任意兩個可開問卷。
+const studyUnitIndices=[0,1,2];
+const required=2;let playEpoch=0,youtubeReady=false, player=null,unitIndex=0,currentVideoID='',currentRole='',finished=new Set(), watched=new Set(),lastTime=null,activeInterval=null,activeVideoDone=false,videoDuration=0,apiError=false;
+let sphericalReady=false,viewState={yaw:0,pitch:0,roll:0,fov:100},dragging=null;
 const $=id=>document.getElementById(id);function show(id){for(let k of ['dashboard','choose-role','watch','survey'])$(k).classList.toggle('hidden',k!==id)};
 const isValidId=id=>/^[A-Za-z0-9_-]{11}$/.test(id||'');
-let pendingEpoch=null, apiWaitTimeout=null;
+let pendingEpoch=null, apiWaitTimeout=null, apiScriptLoadFailed=false;
 window.onYouTubeIframeAPIReady=function(){
  youtubeReady=true;
  if(pendingEpoch!==null){
@@ -131,7 +157,7 @@ window.onYouTubeIframeAPIReady=function(){
   attachYouTubeApi(epoch);
  }
 };
-function renderDashboard(){show('dashboard');const html=tactics.map((v,i)=>`<button class="unit ${finished.has(i)?'done':''}" data-idx="${i}"><div class="top"><span>${v.id} ${v.name.replace(/^\d-\d\.\s*/, '')}</span><span class="mark">${finished.has(i)?'✓ 已完成':'待觀看'}</span></div><div class="sub">${v.type==='2-man'?'二人戰術':'三人戰術'} · 可選進攻或防守視角</div></button>`).join('');$('unit-grid').innerHTML=html;document.querySelectorAll('.unit').forEach(el=>el.addEventListener('click',()=>chooseRole(Number(el.dataset.idx))));$('progress-label').textContent=`已完成 ${finished.size}／${required} 個單元`;$('progress-fill').style.width=(finished.size/required*100)+'%';$('goto-form').disabled=finished.size<required;$('goto-form').textContent=finished.size>=required?'全部完成，前往研究問卷':'尚須完成所有7個單元';}
+function renderDashboard(){show('dashboard');const html=studyUnitIndices.map(i=>{const v=tactics[i];return `<button class="unit ${finished.has(i)?'done':''}" data-idx="${i}"><div class="top"><span>${v.id} ${v.name.replace(/^\d-\d\.\s*/, '')}</span><span class="mark">${finished.has(i)?'✓ 已完成':'待觀看'}</span></div><div class="sub">${v.type==='2-man'?'二人戰術':'三人戰術'} · 可選進攻或防守視角</div></button>`}).join('');$('unit-grid').innerHTML=html;document.querySelectorAll('.unit').forEach(el=>el.addEventListener('click',()=>chooseRole(Number(el.dataset.idx))));$('progress-label').textContent=`已完成 ${finished.size}／${required} 個必要單元（共 ${studyUnitIndices.length} 個可選）`;$('progress-fill').style.width=(finished.size/required*100)+'%';$('goto-form').disabled=finished.size<required;$('goto-form').textContent=finished.size>=required?'全部完成，前往研究問卷':'尚須完成任意2個單元';}
 function chooseRole(i){stopPlayer();unitIndex=i;let t=tactics[i];$('unit-title').textContent=t.name;const names={off_1:'進攻 1號｜持球者',off_2:'進攻 2號｜掩護／切入者',off_3:'進攻 3號｜戰術參與者',def_x1:'防守 X1',def_x2:'防守 X2',def_x3:'防守 X3'};$('role-grid').innerHTML=Object.keys(t.youtube360).map(k=>`<button class="role ${k.startsWith('off')?'off':''}" data-role="${k}">${names[k]||k}</button>`).join('');document.querySelectorAll('.role').forEach(el=>el.addEventListener('click',()=>startVideo(el.dataset.role)));show('choose-role')}
 function startVideo(role){
  stopPlayer();
@@ -143,7 +169,7 @@ function startVideo(role){
  $('error').classList.add('hidden');
  $('watch-status').textContent='正在建立播放器…';
  if(!isValidId(currentVideoID)){fail('影片 ID 格式不正確，請核對學生影片連結。');return;}
- watched=new Set();lastTime=null;activeVideoDone=false;videoDuration=0;apiError=false;
+ watched=new Set();lastTime=null;activeVideoDone=false;videoDuration=0;apiError=false;resetSpherical();
  resetProgress();
  const epoch=playEpoch;
  // 先建立原生 iframe，再連接 IFrame API：可以預先設定 referrerpolicy。
@@ -167,7 +193,7 @@ function startVideo(role){
    apiWaitTimeout=setTimeout(()=>{
      if(pendingEpoch!==epoch)return;
      pendingEpoch=null;
-     $('watch-status').textContent='⚠ YouTube觀看進度介面未載入。可以嘗試播放影片，但本次觀看無法計入問卷解鎖。請關閉廣告攔截器、確認網路或重新載入網頁。';
+     $('watch-status').textContent='⚠ YouTube觀看進度介面未載入'+(apiScriptLoadFailed?'（播放器程式網路載入失敗）':'（可能是網路限制或廣告攔截）')+'。可先測試播放器；觀看無法計入問卷解鎖。請改用無痕模式測試或檢查網路限制。';
    },12000);
  }
 }
@@ -183,6 +209,7 @@ function attachYouTubeApi(epoch){
       if(epoch!==playEpoch)return;
       videoDuration=e.target.getDuration()||0;
       $('watch-status').textContent='✅ 影片已連線，請按下播放鍵並完整觀看。';
+      $('pause-play').disabled=false;
     },
     onStateChange:e=>{if(epoch===playEpoch)stateChanged(e)},
     onError:e=>{
@@ -199,12 +226,27 @@ function attachYouTubeApi(epoch){
   }});
  }catch(e){fail('YouTube介面初始化失敗：'+e.message)}
 }
-function stateChanged(e){if(e.data===YT.PlayerState.PLAYING){if(!activeInterval)activeInterval=setInterval(sample,300);$('watch-status').textContent='正在紀錄觀看進度…';}else{sample();stopTimer();if(e.data===YT.PlayerState.ENDED){const ratio=videoDuration>0?watched.size/videoDuration:0;if(ratio>=0.9){finished.add(unitIndex);activeVideoDone=true;$('watch-status').textContent='✅ 此戰術單元已完成觀看！可回到主目錄繼續下一單元。';}else{$('watch-status').textContent='尚未達最低有效觀看比例（約90%）。請重播並完整觀看；直接跳到片尾不計入。';}resetProgress();}}}
-function sample(){if(!player||typeof player.getCurrentTime!=='function'||activeVideoDone)return;try{if(player.getPlayerState()!==YT.PlayerState.PLAYING)return;const t=player.getCurrentTime(),d=player.getDuration();if(d>0)videoDuration=d;if(lastTime!==null&&t>=lastTime&&t-lastTime<=1.5){for(let s=Math.floor(lastTime);s<=Math.floor(t);s++)if(s>=0&&s<Math.ceil(videoDuration))watched.add(s)}lastTime=t;resetProgress();}catch(e){}}
+function stateChanged(e){
+ if(e.data===YT.PlayerState.PLAYING){
+  if(!activeInterval)activeInterval=setInterval(sample,300);
+  $('watch-status').textContent='正在紀錄觀看進度…';
+  checkSpherical();toggleDrag(true);
+ }else{
+  sample();stopTimer();toggleDrag(false);
+  if(e.data===YT.PlayerState.ENDED){
+   const ratio=videoDuration>0?watched.size/videoDuration:0;
+   if(ratio>=0.9){if(studyUnitIndices.includes(unitIndex))finished.add(unitIndex);activeVideoDone=true;$('watch-status').textContent='✅ 此戰術單元已完成觀看！可回到主目錄繼續下一單元。';}
+   else{$('watch-status').textContent='尚未達最低有效觀看比例（約90%）。請重播並完整觀看；直接跳到片尾不計入。';}
+   resetProgress();
+  }
+ }
+}
+
+function sample(){if(!player||typeof player.getCurrentTime!=='function'||activeVideoDone)return;try{if(player.getPlayerState()!==YT.PlayerState.PLAYING)return;const t=player.getCurrentTime(),d=player.getDuration();if(d>0)videoDuration=d;if(!sphericalReady)checkSpherical();if(lastTime!==null&&t>=lastTime&&t-lastTime<=1.5){for(let s=Math.floor(lastTime);s<=Math.floor(t);s++)if(s>=0&&s<Math.ceil(videoDuration))watched.add(s)}lastTime=t;resetProgress();}catch(e){}}
 function resetProgress(){const pct=videoDuration>0?Math.min(100,Math.round(100*watched.size/videoDuration)):0;$('video-progress').style.width=pct+'%';$('video-progress-label').textContent=`有效觀看進度：${pct}%（完成條件：≥90% 且播放到結束）`;}
 function stopTimer(){if(activeInterval){clearInterval(activeInterval);activeInterval=null;}}
 function stopPlayer(){
- playEpoch++;stopTimer();
+ playEpoch++;stopTimer();resetSpherical();
  pendingEpoch=null;
  if(apiWaitTimeout){clearTimeout(apiWaitTimeout);apiWaitTimeout=null;}
  if(player){try{player.destroy()}catch(e){} player=null;}
@@ -217,11 +259,73 @@ function fail(msg){stopTimer();
  $('watch-status').textContent='播放發生問題；本單元不會被標記完成。';
 }
 
-function revealForm(){if(finished.size<required){return;}stopPlayer();show('survey');$('form-direct').href=FORM_URL;const u=new URL(FORM_URL);u.searchParams.set('embedded','true');$('form-iframe').src=u.toString();}
+
+// 360-degree camera: YouTube IFrame API spherical controls, usable when native embedded mouse dragging is missing.
+function resetSpherical(){
+ sphericalReady=false;
+ viewState={yaw:0,pitch:0,roll:0,fov:100};dragging=null;
+ const zone=$('drag-zone');if(zone){zone.classList.remove('enabled','dragging');}
+ document.querySelectorAll('[data-camera]').forEach(b=>b.disabled=true);
+ const pause=$('pause-play');if(pause)pause.disabled=true;
+ const label=$('view-status');if(label)label.textContent='請開始播放影片，系統才會檢查360度視角功能。';
+}
+function checkSpherical(){
+ if(sphericalReady||!player||typeof player.getSphericalProperties!=='function')return;
+ try{
+  const p=player.getSphericalProperties();
+  if(!p || !Number.isFinite(p.yaw) || !Number.isFinite(p.pitch))return;
+  sphericalReady=true;
+  viewState={yaw:p.yaw,pitch:p.pitch,roll:Number.isFinite(p.roll)?p.roll:0,fov:Number.isFinite(p.fov)?p.fov:100};
+  // On supported mobile devices, use drag gestures rather than device orientation sensors.
+  if(typeof player.setSphericalProperties==='function')player.setSphericalProperties({enableOrientationSensor:false});
+  document.querySelectorAll('[data-camera]').forEach(b=>b.disabled=false);
+  const zone=$('drag-zone');if(zone && player.getPlayerState()===YT.PlayerState.PLAYING)zone.classList.add('enabled');
+  $('view-status').textContent='✅ 已偵測到360度視角。播放時在影片中央按住滑鼠拖曳，或使用方向按鈕。若暫停，可按影片播放鍵或下方「播放／暫停」。';
+ }catch(e){console.warn('Spherical detection:',e);}
+}
+function toggleDrag(playing){const zone=$('drag-zone');if(zone)zone.classList.toggle('enabled',Boolean(playing&&sphericalReady));}
+function changeView(properties){
+ if(!sphericalReady||!player||typeof player.setSphericalProperties!=='function')return;
+ viewState={...viewState,...properties};
+ viewState.yaw=((viewState.yaw%360)+360)%360;
+ viewState.pitch=Math.max(-85,Math.min(85,viewState.pitch));
+ viewState.fov=Math.max(30,Math.min(120,viewState.fov));
+ try{player.setSphericalProperties({yaw:viewState.yaw,pitch:viewState.pitch,roll:viewState.roll,fov:viewState.fov,enableOrientationSensor:false});}
+ catch(e){console.warn('Cannot update 360 camera:',e);$('view-status').textContent='視角更新失敗，請改在 YouTube 原生頁面測試。';}
+}
+// Capture dragging only over the middle of the video; keep YouTube's bottom playback controls clickable.
+const dragZone=$('drag-zone');
+dragZone.addEventListener('pointerdown',e=>{
+ if(!sphericalReady||!player || e.button!==0)return;
+ e.preventDefault();
+ dragging={id:e.pointerId,x:e.clientX,y:e.clientY};
+ dragZone.classList.add('dragging');
+ dragZone.setPointerCapture(e.pointerId);
+});
+dragZone.addEventListener('pointermove',e=>{
+ if(!dragging||dragging.id!==e.pointerId)return;
+ e.preventDefault();
+ const dx=e.clientX-dragging.x,dy=e.clientY-dragging.y;
+ dragging.x=e.clientX;dragging.y=e.clientY;
+ changeView({yaw:viewState.yaw-dx*0.32,pitch:viewState.pitch+dy*0.22});
+});
+function endDrag(e){if(dragging&&dragging.id===e.pointerId){dragging=null;dragZone.classList.remove('dragging');if(dragZone.hasPointerCapture(e.pointerId))dragZone.releasePointerCapture(e.pointerId);}}
+dragZone.addEventListener('pointerup',endDrag);
+dragZone.addEventListener('pointercancel',endDrag);
+document.querySelectorAll('[data-camera]').forEach(btn=>btn.addEventListener('click',()=>{
+ const actions={left:{yaw:viewState.yaw+25},right:{yaw:viewState.yaw-25},up:{pitch:viewState.pitch+15},down:{pitch:viewState.pitch-15},zoomIn:{fov:viewState.fov-10},zoomOut:{fov:viewState.fov+10},reset:{yaw:0,pitch:0,roll:0,fov:100}};
+ changeView(actions[btn.dataset.camera]||{});
+}));
+$('pause-play').addEventListener('click',()=>{
+ if(!player || typeof player.getPlayerState!=='function')return;
+ try{if(player.getPlayerState()===YT.PlayerState.PLAYING)player.pauseVideo();else player.playVideo();}catch(e){console.warn(e);}
+});
+
+function revealForm(){if(studyUnitIndices.filter(i=>finished.has(i)).length<required){return;}stopPlayer();show('survey');$('form-direct').href=FORM_URL;const u=new URL(FORM_URL);u.searchParams.set('embedded','true');$('form-iframe').src=u.toString();}
 $('goto-form').onclick=revealForm;$('review-videos').onclick=renderDashboard;$('back-units').onclick=renderDashboard;$('back-dashboard').onclick=()=>{stopPlayer();renderDashboard();};$('back-roles').onclick=()=>chooseRole(unitIndex);$('restart-video').onclick=()=>startVideo(currentRole);
 if(location.protocol==='file:')$('host-warning').classList.remove('hidden');
 renderDashboard();
 // No name/student-ID fields. Refreshing resets the lightweight browser gate.
 </script>
-<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://www.youtube.com/iframe_api" onerror="apiScriptLoadFailed=true;console.warn('YouTube IFrame API script loading failed');"></script>
 </body></html>
