@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="zh-TW"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第三組｜360度籃球戰術觀看與問卷</title>
+<style>
+:root {color-scheme:light;--navy:#12263b;--blue:#1863b1;--sea:#168fa4;--ink:#18283b;--muted:#667585;--bg:#f4f7fb;--line:#dce6ef}
+*{box-sizing:border-box} body{font-family:"Microsoft JhengHei","PingFang TC",system-ui,sans-serif;color:var(--ink);background:var(--bg);margin:0} .container{max-width:1120px;margin:24px auto;padding:0 18px 30px}
+header{border-radius:18px 18px 0 0;padding:26px 30px;background:linear-gradient(120deg,#12263b,#1e5675);color:white} header h1{font-size:28px;margin:5px 0 8px}header p{margin:0;color:#dbe8f0}.tag{font-size:12px;letter-spacing:.6px;font-weight:700;color:#aee3f5}
+main{background:white;border:1px solid var(--line);border-radius:0 0 18px 18px;padding:26px 30px;box-shadow:0 10px 30px #1233a013} .hidden{display:none!important} .notice{padding:13px 15px;border-radius:10px;background:#eef6fb;color:#174c6e;font-size:14px;margin-bottom:20px;line-height:1.75}.warning{background:#fff5e6;color:#8f5118}.err{background:#ffeded;color:#922b2b}
+.title-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.title-row h2{font-size:21px;margin:0 0 16px}.step{font-size:13px;color:#567590}.progress-bar{width:100%;height:12px;border-radius:100px;background:#e5edf4;overflow:hidden;margin:7px 0 12px}.progress-bar>div{height:100%;background:#197c99;transition:width .25s}.g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.unit{border:1px solid var(--line);border-radius:10px;background:#fff;padding:15px;text-align:left;cursor:pointer;color:var(--ink);min-height:86px}.unit:hover{background:#f2f8fc;border-color:#8cbace}.unit.done{background:#edf8f3;border-color:#80c4a6}.unit .top{display:flex;justify-content:space-between;gap:10px;font-weight:700}.unit .sub{font-size:13px;color:#617384;margin-top:7px}.mark{color:#126c51;font-size:12px;white-space:nowrap}
+.role-group{margin-top:12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.role{border:1px solid #c9dce9;background:#f4f9fc;border-radius:9px;cursor:pointer;padding:12px;font:inherit;text-align:center;font-weight:600}.role:hover{background:#dfedfa}.role.off{border-color:#e6cbcb;background:#fff5f5}.role.off:hover{background:#ffebeb}
+button,.btn{font:inherit}button:disabled{cursor:not-allowed;opacity:.55}.btn{display:inline-block;text-decoration:none;border:0;border-radius:9px;background:#1863b1;color:white;padding:10px 18px;cursor:pointer;font-weight:600}.btn:hover{background:#13538f}.btn.ghost{background:#e9f0f6;color:#244863}.btn.ghost:hover{background:#d9e7ef}.btn.green{background:#127b5d}.btn.green:hover{background:#0c6249}.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.muted{color:var(--muted);font-size:14px;line-height:1.75}.bar-text{font-size:13px;color:#4c647a}.video{position:relative;width:100%;aspect-ratio:16/9;background:#101b24;border-radius:11px;overflow:hidden;margin:15px 0}.video iframe{height:100%;width:100%;border:0}.status{margin:12px 0;padding:12px;border-radius:9px;background:#eef6fb;font-size:14px;line-height:1.7}.small{font-size:12px;color:#728293}.formframe{width:100%;min-height:750px;border:1px solid var(--line);border-radius:11px;margin-top:15px}
+footer{text-align:center;color:#748395;margin:12px 0 0;font-size:12px}@media(max-width:720px){.g,.role-group{grid-template-columns:1fr}main{padding:18px}header{padding:20px}.video{aspect-ratio:16/10}}
+</style>
+</head><body><div class="container"><header><div class="tag">BASKETBALL 360 LEARNING STUDY · GROUP C</div><h1>🏀 360度籃球戰術觀看</h1><p>第三組（未融入TGfU）｜觀看所有戰術單元後填寫研究問卷</p></header><main>
+<div id="host-warning" class="notice warning hidden">此頁正在以本機 file:// 路徑開啟。YouTube 嵌入與播放狀態偵測可能無法運作。正式施測請放在 HTTPS 網站（例如 GitHub Pages），不要直接雙擊 HTML。</div>
+<section id="dashboard">
+<div class="title-row"><h2>選擇戰術單元</h2><span class="step">步驟 1／2</span></div>
+<p class="muted">選擇單元 → 選擇攻防角色視角 → 播放至片尾。每單元至少完成一種角色視角，才計入進度。</p><div class="bar-text" id="progress-label">已完成 0／7 個單元</div><div class="progress-bar"><div id="progress-fill" style="width:0%"></div></div>
+<div id="unit-grid" class="g"></div>
+<div class="btn-row"><button class="btn green" id="goto-form" disabled>尚須完成所有7個單元</button></div>
+</section>
+<section id="choose-role" class="hidden">
+<div class="title-row"><h2 id="unit-title">戰術單元</h2><span class="step">選擇360度角色視角</span></div>
+<div class="notice">請選擇至少一個角色視角並觀看至結束。此版本<strong>不強制播放2D戰術引導影片</strong>，避免第三組被加入額外的TGfU式教學活動。原學生檔案中的2D影片資訊仍保存在程式資料內，並未刪除。</div>
+<div class="role-group" id="role-grid"></div><div class="btn-row"><button class="btn ghost" id="back-units">返回戰術單元</button></div>
+</section>
+<section id="watch" class="hidden">
+<div class="title-row"><h2 id="watch-title">360影片播放</h2><span class="step">正在觀看</span></div>
+<div id="error" class="notice err hidden"></div>
+<div class="video"><div id="yt-player-slot"><div id="yt-player"></div></div></div>
+<div id="watch-status" class="status">正在載入 YouTube 360度影片…</div>
+<div class="bar-text" id="video-progress-label">尚未開始觀看</div><div class="progress-bar"><div id="video-progress" style="width:0%"></div></div>
+<p class="muted">可用滑鼠拖曳觀看360度視角。需累計觀看影片約90%並播放至結尾才能完成本單元；直接跳到片尾不計入已觀看。此為一般網頁的流程檢查，不能作為絕對防止繞過的認證機制。</p>
+<div class="btn-row"><button class="btn ghost" id="restart-video">重播本視角</button><button class="btn ghost" id="back-roles">返回角色選擇</button><button class="btn ghost" id="back-dashboard">返回所有單元</button></div>
+</section>
+<section id="survey" class="hidden">
+<div class="title-row"><h2>觀看完成｜填寫研究問卷</h2><span class="step">步驟 2／2</span></div>
+<div class="notice">七個戰術單元均已完成最低觀看要求。請在下方 Google 表單填寫<strong>姓名、學號</strong>及完整研究問卷；本網頁不會另外蒐集個人資料。若表單未正常顯示，點選「另開表單」按鈕。</div>
+<div class="btn-row"><a class="btn green" id="form-direct" target="_blank" rel="noopener noreferrer">另開Google問卷</a><button class="btn ghost" id="review-videos">返回影片單元</button></div>
+<iframe title="第三組研究問卷" class="formframe" id="form-iframe" loading="lazy"></iframe>
+</section>
+</main><footer>本版本根據學生提供的22.html改製，保留七個戰術與角色影片對應。正式研究前須確認YouTube嵌入權限及Google表單必填設定。</footer></div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+'use strict';
+const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdDjx1Crajz8y6TtwfPloVitUwd6V9tcmfSrcMlaDkOjKJ43Q/viewform?usp=publish-editor';
+  const YT_1 = 'vPyxEvSNwKU';
+  const YT_2 = 'T1D6G7FlKAM';
+  const YT_3 = '8mxnWQ-q2ow';
+  const YT_4 = 'sX49UyKfUVE';
+  const YT_5 = 'OBkBmoL5ufw';
+  const YT_6 = 'ZqSB5mhyQbk';
+
+  const tactics = [
+    { 
+      id: '1-1', type: '2-man', name: '1-1. Screen - 空檔投 【擋拆外彈投籃 Pick & Pop】', 
+      youtube2D: YT_1,
+      youtube360: { 
+        off_1: 'OFjv5ZgPEVU', 
+        off_2: 'r9tGgTT4IR4', 
+        def_x1: '8NRUNV5YzJ8', 
+        def_x2: 'GqXcUvT1xJY' 
+      }
+    },
+    { 
+      id: '1-2', type: '2-man', name: '1-2. 傳切配合 【Pick & Roll】', 
+      youtube2D: YT_2,
+      youtube360: { 
+        off_1: 'aRrJQiQmhBM', 
+        off_2: '83_Gyt7l09I', 
+        def_x1: 'jV5KxjbK0I8', 
+        def_x2: 'GAgVUEBVTL8' 
+      }
+    },
+    { 
+      id: '1-3', type: '2-man', name: '1-3. 單擋 + 外彈投籃 Pop action 【Re-Screening & Pop】', 
+      youtube2D: YT_3,
+      youtube360: { 
+        off_1: 'ROpRgkTwwyE', 
+        off_2: 'gGQv4fQhimA', 
+        def_x1: 'nuDmx5iebGA', 
+        def_x2: 'zHKzt2qQ6co' 
+      }
+    },
+    { 
+      id: '2-1', type: '3-man', name: '2-1. 反向擋 (基本離球) 【離球掩護空切投籃 Off-Ball Away Screen】', 
+      youtube2D: YT_4,
+      youtube360: { 
+        off_1: '6HprxVgfuD4', 
+        off_2: 'TZoIImyPp9o', 
+        off_3: 'wp5xnn9THXg', 
+        def_x1: 'Ca23taRoyGE', 
+        def_x2: '4rFK5jkjp4Y', 
+        def_x3: 'kSDiLc8WMg4' 
+      }
+    },
+    { 
+      id: '2-2', type: '3-man', name: '2-2. 反向掩護繞出投籃 【Back Screen】', 
+      youtube2D: YT_5,
+      youtube360: { 
+        off_1: 'xd0RFMRfCLs', 
+        off_2: 'kAXG6Zl7Fz8', 
+        off_3: 'CBoG4zJkarc', 
+        def_x1: 'BCcq90W1aN4', 
+        def_x2: 'sxffqg4te08', 
+        def_x3: 'Rhglk6bO7yc' 
+      }
+    },
+    { 
+      id: '2-3', type: '3-man', name: '2-3. 傳切配合 【Give & Go】', 
+      youtube2D: YT_6,
+      youtube360: { 
+        off_1: '0cYiWL5AKQw', 
+        off_2: 'j-zjQS2bbSo', 
+        off_3: 'ITVANlvZzIk', 
+        def_x1: 'iJi32PB4pUI', 
+        def_x2: 'Xi4Hshh0sFc', 
+        def_x3: 'NuGPlGNqc8g' 
+      }
+    },
+    { 
+      id: '2-4', type: '3-man', name: '2-4. 反向擋轉動態擋拆 【Off-Ball Screen Action】', 
+      youtube2D: YT_1,
+      youtube360: { 
+        off_1: 'WEvAMM3gISo', 
+        off_2: 'uAhviMqJ0b0', 
+        off_3: 'XjeKMhhGIuc', 
+        def_x1: 'fZ3VLcFHU2Y', 
+        def_x2: 'rHhYqP9e7Dc', 
+        def_x3: '-yAektPP-v8' 
+      }
+    }
+  ];
+
+
+const required=7;let playEpoch=0,youtubeReady=false, player=null,unitIndex=0,currentVideoID='',currentRole='',finished=new Set(), watched=new Set(),lastTime=null,activeInterval=null,activeVideoDone=false,videoDuration=0,apiError=false;
+const $=id=>document.getElementById(id);function show(id){for(let k of ['dashboard','choose-role','watch','survey'])$(k).classList.toggle('hidden',k!==id)};
+const isValidId=id=>/^[A-Za-z0-9_-]{11}$/.test(id||'');
+window.onYouTubeIframeAPIReady=function(){youtubeReady=true;};
+function renderDashboard(){show('dashboard');const html=tactics.map((v,i)=>`<button class="unit ${finished.has(i)?'done':''}" data-idx="${i}"><div class="top"><span>${v.id} ${v.name.replace(/^\d-\d\.\s*/, '')}</span><span class="mark">${finished.has(i)?'✓ 已完成':'待觀看'}</span></div><div class="sub">${v.type==='2-man'?'二人戰術':'三人戰術'} · 可選進攻或防守視角</div></button>`).join('');$('unit-grid').innerHTML=html;document.querySelectorAll('.unit').forEach(el=>el.addEventListener('click',()=>chooseRole(Number(el.dataset.idx))));$('progress-label').textContent=`已完成 ${finished.size}／${required} 個單元`;$('progress-fill').style.width=(finished.size/required*100)+'%';$('goto-form').disabled=finished.size<required;$('goto-form').textContent=finished.size>=required?'全部完成，前往研究問卷':'尚須完成所有7個單元';}
+function chooseRole(i){stopPlayer();unitIndex=i;let t=tactics[i];$('unit-title').textContent=t.name;const names={off_1:'進攻 1號｜持球者',off_2:'進攻 2號｜掩護／切入者',off_3:'進攻 3號｜戰術參與者',def_x1:'防守 X1',def_x2:'防守 X2',def_x3:'防守 X3'};$('role-grid').innerHTML=Object.keys(t.youtube360).map(k=>`<button class="role ${k.startsWith('off')?'off':''}" data-role="${k}">${names[k]||k}</button>`).join('');document.querySelectorAll('.role').forEach(el=>el.addEventListener('click',()=>startVideo(el.dataset.role)));show('choose-role')}
+function startVideo(role){stopPlayer();currentRole=role;currentVideoID=tactics[unitIndex].youtube360[role];show('watch');$('watch-title').textContent=`${tactics[unitIndex].id}｜${role.replace('_',' ')}`;$('error').classList.add('hidden');$('watch-status').textContent='正在連線 YouTube…';if(!isValidId(currentVideoID)){fail('影片ID格式不正確，請核對學生影片連結。');return;}if(!youtubeReady){fail('YouTube播放器尚未載入。請確認網路可連線，並透過HTTPS網站開啟本頁。');return;}
+watched=new Set();lastTime=null;activeVideoDone=false;videoDuration=0;apiError=false;resetProgress();const epoch=playEpoch;try{player=new YT.Player('yt-player',{height:'100%',width:'100%',videoId:currentVideoID,playerVars:{playsinline:1,rel:0,enablejsapi:1},events:{onReady:(e)=>{if(epoch!==playEpoch)return;let d=e.target.getDuration();videoDuration=d||0;$('watch-status').textContent='影片已載入。請按播放鍵，從頭看到結尾。';e.target.seekTo(0,true);e.target.pauseVideo();},onStateChange:e=>{if(epoch===playEpoch)stateChanged(e)},onError:e=>{if(epoch!==playEpoch)return;apiError=true;let descriptions={2:'影片ID無效',5:'播放器無法播放',100:'影片已移除或設為私人',101:'影片禁止在其他網站嵌入',150:'影片禁止在其他網站嵌入',153:'缺少必要的播放器來源資訊，請使用HTTPS正式網址開啟'};fail('YouTube錯誤 '+e.data+'：'+(descriptions[e.data]||'無法播放')+'。請先到YouTube確認影片是否公開且允許嵌入。')}}});}catch(e){fail('無法建立YouTube播放器：'+e.message)}}
+function stateChanged(e){if(e.data===YT.PlayerState.PLAYING){if(!activeInterval)activeInterval=setInterval(sample,300);$('watch-status').textContent='正在紀錄觀看進度…';}else{sample();stopTimer();if(e.data===YT.PlayerState.ENDED){const ratio=videoDuration>0?watched.size/videoDuration:0;if(ratio>=0.9){finished.add(unitIndex);activeVideoDone=true;$('watch-status').textContent='✅ 此戰術單元已完成觀看！可回到主目錄繼續下一單元。';}else{$('watch-status').textContent='尚未達最低有效觀看比例（約90%）。請重播並完整觀看；直接跳到片尾不計入。';}resetProgress();}}}
+function sample(){if(!player||typeof player.getCurrentTime!=='function'||activeVideoDone)return;try{if(player.getPlayerState()!==YT.PlayerState.PLAYING)return;const t=player.getCurrentTime(),d=player.getDuration();if(d>0)videoDuration=d;if(lastTime!==null&&t>=lastTime&&t-lastTime<=1.5){for(let s=Math.floor(lastTime);s<=Math.floor(t);s++)if(s>=0&&s<Math.ceil(videoDuration))watched.add(s)}lastTime=t;resetProgress();}catch(e){}}
+function resetProgress(){const pct=videoDuration>0?Math.min(100,Math.round(100*watched.size/videoDuration)):0;$('video-progress').style.width=pct+'%';$('video-progress-label').textContent=`有效觀看進度：${pct}%（完成條件：≥90% 且播放到結束）`;}
+function stopTimer(){if(activeInterval){clearInterval(activeInterval);activeInterval=null;}}function stopPlayer(){playEpoch++;stopTimer();if(player){try{player.destroy()}catch(e){} player=null;}const slot=$('yt-player-slot');if(slot)slot.innerHTML='<div id="yt-player"></div>';}
+function fail(msg){stopTimer();$('error').textContent=msg;$('error').classList.remove('hidden');$('watch-status').textContent='播放發生問題；本單元不會被標記完成。';}
+function revealForm(){if(finished.size<required){return;}stopPlayer();show('survey');$('form-direct').href=FORM_URL;const u=new URL(FORM_URL);u.searchParams.set('embedded','true');$('form-iframe').src=u.toString();}
+$('goto-form').onclick=revealForm;$('review-videos').onclick=renderDashboard;$('back-units').onclick=renderDashboard;$('back-dashboard').onclick=()=>{stopPlayer();renderDashboard();};$('back-roles').onclick=()=>chooseRole(unitIndex);$('restart-video').onclick=()=>startVideo(currentRole);
+if(location.protocol==='file:')$('host-warning').classList.remove('hidden');
+renderDashboard();
+// No name/student-ID fields on the video page. Completion is not persisted; refreshing resets the lightweight browser gate.
+</script></body></html>
